@@ -1,6 +1,24 @@
 function volume_sphere() {
-    //Write your code here
+    const ipRadius=document.getElementById("radius");
+	const opVolume=document.getElementById("volume");
+
+	const r=parseFloat(ipRadius.value);
+	if(isNaN(r)|| r<0){
+		alert("enter valid radius");
+		opVolume.value="";
+		return false;
+	}
+
+	const volume=(4/3)*Math.PI*Math.pow(r,3);
+
+	opVolume.value=volume.toFixed(4);
+	return false;
   
 } 
 
-window.onload = document.getElementById('MyForm').onsubmit = volume_sphere;
+window.onload=function(){
+	document.getElementById("MyForm").onsubmit=function(e){
+		e.preventDefault();
+		volume_sphere();
+	}
+}

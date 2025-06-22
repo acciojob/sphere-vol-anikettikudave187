@@ -11,7 +11,7 @@ function volume_sphere() {
 
 	const volume=(4/3)*Math.PI*Math.pow(r,3);
 
-	opVolume.value=volume.toFixed(4);
+	opVolume.value=isNaN(volume)?volume:volume.toFixed(4);
 	return false;
   
 } 

@@ -1,24 +1,27 @@
 function volume_sphere() {
-    const ipRadius=document.getElementById("radius");
-	const opVolume=document.getElementById("volume");
+  const radiusInput = document.getElementById("radius");
+  const volumeOutput = document.getElementById("volume");
 
-	const r=parseFloat(ipRadius.value);
-	if(isNaN(r)|| r<0){
-		alert("enter valid radius");
-		opVolume.value="";
-		return false;
-	}
+  const radius = parseFloat(radiusInput.value);
 
-	const volume=(4/3)*Math.PI*Math.pow(r,3);
+  // Clear the volume field first
+  volumeOutput.value = "";
 
-	opVolume.value=volume.toFixed(4);
-	return false;
-  
-} 
+  // If invalid input, exit early
+  if (isNaN(radius) || radius < 0) {
+    return false;
+  }
 
-window.onload=function(){
-	document.getElementById("MyForm").onsubmit=function(e){
-		e.preventDefault();
-		volume_sphere();
-	}
+  const volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
+  volumeOutput.value = volume.toFixed(4);
+
+  return false;
 }
+
+window.onload = function () {
+  const form = document.getElementById("MyForm");
+  form.onsubmit = function (e) {
+    e.preventDefault();
+    volume_sphere();
+  };
+};
